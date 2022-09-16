@@ -1,0 +1,35 @@
+﻿@model List<Post>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        string url = $"/{item.Alias}.html";
+        <tr>
+            <th scope="row">@item.PostId</th>
+            <td>
+                <a href="/@url">@item.Tilte</a>
+            </td>
+
+            <td>
+                <a href="/@item.Cat.Alias">@item.Cat.CatName</a>
+            </td>
+            <td>
+                @if (item.Published == true)
+                {
+                    <span class="badge badge-primary">Public</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Non - Public</span>
+                }
+
+            </td>
+            <td>@item.Views</td>
+            <td>
+                <a href="@url" target="_blank" class="btn btn-success">View</a>
+                <a asp-area="Admin" asp-controller="Posts" asp-action="Edit" asp-route-id="@item.PostId" class="btn btn-primary">Edit</a>
+                <a asp-area="Admin" asp-controller="Posts" asp-action="Delete" asp-route-id="@item.PostId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+}

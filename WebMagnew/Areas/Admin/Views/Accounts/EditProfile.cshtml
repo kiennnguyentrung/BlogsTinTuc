@@ -1,0 +1,50 @@
+﻿@model WebMagnew.Models.Account
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Accounts" asp-action="Index">QUẢN LÝ TÀI KHOẢN</a></li>
+        <li class="breadcrumb-item active" aria-current="page">TẠO TÀI KHOẢN</li>
+    </ol>
+    <h6 class="slim-pagetitle">CHỈNH SỬA TÀI KHOẢN </h6>
+</div><!-- slim-pageheader -->
+
+<div class="section-wrapper">
+    <div class="form-layout">
+        <form asp-area="Admin" asp-controller="Accounts" asp-action="EditProfile" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="AccountId" />
+            <input type="hidden" asp-for="Salt" />
+            <div class="row mg-b-25">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Họ tên: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="FullName">
+                    </div>
+                </div><!-- col-4 -->
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Số điện thoại: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="Phone">
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="Email">
+                    </div>
+                </div><!-- col-12 -->
+
+            </div><!-- row -->
+
+            <div class="form-layout-footer">
+                <button class="btn btn-primary bd-0" value="Save">Submit Form</button>
+                <button class="btn btn-secondary bd-0">Cancel</button>
+            </div><!-- form-layout-footer -->
+        </form>
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->

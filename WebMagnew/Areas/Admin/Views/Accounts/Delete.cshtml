@@ -1,0 +1,66 @@
+﻿@model WebMagnew.Models.Account
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Categories" asp-action="Index">QUẢN LÝ TÀI KHOẢN</a></li>
+        <li class="breadcrumb-item active" aria-current="page">XÓA TÀI KHOẢN</li>
+    </ol>
+    <h6 class="slim-pagetitle">XÓA TÀI KHOẢN </h6>
+</div><!-- slim-pageheader -->
+<div class="section-wrapper mg-t-20">
+    <div class="form-layout form-layout-6">
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                ID:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="AccountId">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Họ tên:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="FullName">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+             
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Trạng thái:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (Model.Active == true)
+                {
+                    <span class="badge badge-primary">Active</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Block</span>
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Role:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Role.RoleName">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="AccountId" />
+    <input type="submit" value="Xóa" class="btn btn-danger" /> |
+    <a asp-action="Index">Hủy</a>
+</form>
+

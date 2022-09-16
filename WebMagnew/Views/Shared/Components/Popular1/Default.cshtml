@@ -1,0 +1,28 @@
+﻿@model List<Post>
+<!-- popular posts -->
+<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            string url = $"{item.Alias}.html";
+            <!-- post -->
+            <div class="post post-list-sm circle">
+                <div class="thumb circle">
+                    <a href="@url">
+                        <div class="inner">
+                            <img src="images/posts/@item.Thumb" alt="@item.Tilte" />
+                        </div>
+                    </a>
+                </div>
+                <div class="details clearfix">
+                    <h6 class="post-title my-0"><a href="@url">@item.Tilte</a></h6>
+                    <ul class="meta list-inline mt-1 mb-0">
+                        <li class="list-inline-item">@item.CreateAt.Value.ToString("dd MMM yyyy")</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+    </div>
+

@@ -1,0 +1,74 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<WebMagnew.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Accounts" asp-action="Index">QUẢN LÝ TÀI KHOẢN</a></li>
+    </ol>
+    <h6 class="slim-pagetitle">QUẢN LÝ TÀI KHOẢN</h6>
+</div><!-- slim-pageheader -->
+
+<div class="section-wrapper">
+    <div class="table-responsive">
+        <a asp-area="Admin" asp-controller="Accounts" asp-action="Create" class="btn btn-primary">Create</a>
+    <br />
+        <table class="table mg-b-0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ và tên</th>
+                    <th>Trạng thái</th>
+                    <th>Quyền truy cập</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <th scope="row">@item.AccountId</th>
+                            <td>
+                                <p>Họ và tên: @item.FullName</p>
+                                <p>Lastlogin: @item.LastLogin</p>
+                            </td>
+                            <td>
+                                @if (item.Active == true)
+                                {
+                                    <span class="badge badge-primary">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-primary">Block</span>
+                                }
+
+                            </td>
+                            <td>
+                                @item.Role.RoleName
+                            </td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="Accounts" asp-action="Details" asp-route-id="@item.AccountId" class="btn btn-success">Xem</a>
+                                <a asp-area="Admin" asp-controller="Accounts" asp-action="Edit" asp-route-id="@item.AccountId" class="btn btn-primary">Sửa</a>
+                                <a asp-area="Admin" asp-controller="Accounts" asp-action="Delete" asp-route-id="@item.AccountId" class="btn btn-danger">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+        <div aria-label="Page navigation example">
+            <ul class="pagination">
+                <pager class="pager-container" options="@PagedListRenderOptions.PageNumbersOnly" list="@Model" asp-area="Admin" asp-controller="Posts" asp-route-catID="@ViewBag.CurrentCat" asp-action="Index"></pager>
+            </ul>
+        </div>
+    </div><!-- table-responsive -->
+</div><!-- section-wrapper -->

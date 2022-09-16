@@ -1,0 +1,322 @@
+﻿@model WebMagnew.Models.Post
+
+@{
+    ViewData["Title"] = Model.Tilte;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = $"/{Model.Alias}.html";
+    List<Post> BaiVietLienQuan = ViewBag.BaiVietLienQuan;
+}
+
+<!-- section main content -->
+<section class="main-content mt-3">
+    <div class="container-xl">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/@Model.Cat.Alias">@Model.Cat.CatName</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Tilte</li>
+            </ol>
+        </nav>
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+                <!-- post single -->
+                <div class="post post-single">
+                    <!-- post header -->
+                    <div class="post-header">
+                        <h1 class="title mt-0 mb-3">@Model.Tilte</h1>
+                        <ul class="meta list-inline mb-0">
+                            <li class="list-inline-item"><a href="@url"><img src="images/other/author-sm.png" class="author" alt="@Model.Author" />@Model.Author</a></li>
+                            <li class="list-inline-item"><a href="/@Model.Cat.Alias">@Model.Cat.CatName</a></li>
+                            <li class="list-inline-item">@Model.CreateAt.Value.ToString("dd MMM yyyy")</li>
+                        </ul>
+                    </div>
+                    <!-- featured image -->
+                    <div class="featured-image">
+                        <img src="images/posts/@Model.Thumb" alt="@Model.Tilte" />
+                    </div>
+                    <!-- post content -->
+                    <div class="post-content clearfix">
+                        @Html.Raw(Model.Contents)
+                    </div>
+                    <!-- post bottom section -->
+                    <div class="post-bottom">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-6 col-12 text-center text-md-start">
+                                <!-- tags -->
+                                <a href="/@Model.Cat.Alias" class="tag">@Model.Cat.CatName</a>
+                                @*<a href="#" class="tag">#Video</a>
+                        <a href="#" class="tag">#Featured</a>*@
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <!-- social icons -->
+                                <ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="spacer" data-height="50"></div>
+
+                <div class="about-author padding-30 rounded">
+                    <div class="thumb">
+                        <img src="images/posts/@Model.Thumb" alt="@Model.Author" />
+                    </div>
+                    <div class="details">
+                        <h4 class="name"><a href="#">@Model.Account.FullName</a></h4>
+
+                        <ul class="social-icons list-unstyled list-inline mb-0">
+                            @await Component.InvokeAsync("Social")
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="spacer" data-height="50"></div>
+
+
+                <div class="section-header">
+                    <h3 class="section-title">Bài viết liên quan</h3>
+                    <img src="images/wave.svg" class="wave" alt="wave" />
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-6">
+                        <!-- post -->
+                        @if (BaiVietLienQuan != null && BaiVietLienQuan.Count > 0)
+                        {
+                            foreach (var item in BaiVietLienQuan)
+                            {
+                                string _url = $"/{Model.Alias}.html";
+                                <div class="post post-list clearfix">
+                                    <div class="thumb rounded">
+                                        <span class="post-format-sm">
+                                            <i class="icon-picture"></i>
+                                        </span>
+                                        <a href="@_url">
+                                            <div class="inner">
+                                                <img src="images/posts/@item.Thumb" alt="@item.Tilte" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details">
+                                        <ul class="meta list-inline mb-3">
+                                            @*<li class="list-inline-item"><a href="#"><img src="images/posts/@item.Thumb" class="author" alt="@item.Author" />@item.Author</a></li>
+                                    <li class="list-inline-item"><a href="#">@item.Cat.CatName</a></li>*@
+                                            <li class="list-inline-item">@item.CreateAt.Value.ToString("dd MMM yyyy")</li>
+                                        </ul>
+                                        <h5 class="post-title"><a href="@_url">@item.Tilte</a></h5>
+                                        <p class="excerpt mb-0">@item.Scontent</p>
+                                        <div class="post-bottom clearfix d-flex align-items-center">
+                                            @*<div class="social-share me-auto">
+                                        <button class="toggle-button icon-share"></button>
+                                        <ul>
+                                            @await Component.InvokeAsync("Social")
+                                        </ul>
+
+                                    </div>*@
+                                            @*<div class="more-button float-end">
+                                        <a href="@_url"><span class="icon-options"></span></a>
+                                    </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+
+                <div class="spacer" data-height="50"></div>-->
+               
+                @*<div class="section-header">
+                    <h3 class="section-title">Leave Comment</h3>
+                    <img src="images/wave.svg" class="wave" alt="wave" />
+                </div>-->*@
+                <!-- comment form -->
+                <!--<div class="comment-form rounded bordered padding-30">
+                    <form asp-action="CreateComment" asp-controller="Posts">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="messages"></div>
+                        <div class="row">
+                            <div class="column col-md-12">-->
+                                <!-- Comment textarea -->
+                                <!--<div class="form-group">
+                                    <textarea asp-for="PostId" name="InputComment" id="InputComment" class="form-control" rows="4" placeholder="Your comment here..." required="required"></textarea>
+                                    <span asp-validation-for="PostId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default">Submit</button>--><!-- Submit Button -->
+                    <!--</form>
+                </div>-->
+            </div>
+
+            <div class="col-lg-4">
+
+                <!-- sidebar -->
+                <div class="sidebar">
+                    <!-- widget about -->
+                    <div class="widget rounded">
+                        <div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+                            <img src="images/logo.svg" alt="logo" class="mb-4" />
+                            <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+                            <ul class="social-icons list-unstyled list-inline mb-0">
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- widget popular posts -->
+                    <div class="widget rounded">
+                        <div class="widget-content">
+                            @await Component.InvokeAsync("Popular")
+                           
+                        </div>
+                    </div>
+
+                    <!-- widget categories -->
+                    <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Explore Topics</h3>
+                            <img src="images/wave.svg" class="wave" alt="wave" />
+                        </div>
+                        <div class="widget-content">
+                            @await Component.InvokeAsync("Categories")
+                        </div>
+
+                    </div>
+
+                    <!-- widget newsletter -->
+                    <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Newsletter</h3>
+                            <img src="images/wave.svg" class="wave" alt="wave" />
+                        </div>
+                        <div class="widget-content">
+                            <span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
+                            <form>
+                                <div class="mb-2">
+                                    <input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+                                </div>
+                                <button class="btn btn-default btn-full" type="submit">Sign Up</button>
+                            </form>
+                            <span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
+                        </div>
+                    </div>
+
+                    <!-- widget post carousel -->
+                    <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Celebration</h3>
+                            <img src="images/wave.svg" class="wave" alt="wave" />
+                        </div>
+                        <div class="widget-content">
+                            <div class="post-carousel-widget">
+                                <!-- post -->
+                                <div class="post post-carousel">
+                                    <div class="thumb rounded">
+                                        <a href="category.html" class="category-badge position-absolute">How to</a>
+                                        <a href="blog-single.html">
+                                            <div class="inner">
+                                                <img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
+                                    <ul class="meta list-inline mt-2 mb-0">
+                                        <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                        <li class="list-inline-item">29 March 2021</li>
+                                    </ul>
+                                </div>
+                                <!-- post -->
+                                <div class="post post-carousel">
+                                    <div class="thumb rounded">
+                                        <a href="category.html" class="category-badge position-absolute">Trending</a>
+                                        <a href="blog-single.html">
+                                            <div class="inner">
+                                                <img src="images/widgets/widget-carousel-2.jpg" alt="post-title" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">Master The Art Of Nature With These 7 Tips</a></h5>
+                                    <ul class="meta list-inline mt-2 mb-0">
+                                        <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                        <li class="list-inline-item">29 March 2021</li>
+                                    </ul>
+                                </div>
+                                <!-- post -->
+                                <div class="post post-carousel">
+                                    <div class="thumb rounded">
+                                        <a href="category.html" class="category-badge position-absolute">How to</a>
+                                        <a href="blog-single.html">
+                                            <div class="inner">
+                                                <img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
+                                    <ul class="meta list-inline mt-2 mb-0">
+                                        <li class="list-inline-item"><a href="#">Katen Doe</a></li>
+                                        <li class="list-inline-item">29 March 2021</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- carousel arrows -->
+                            <div class="slick-arrows-bot">
+                                <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
+                                <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- widget advertisement -->
+                    <div class="widget no-container rounded text-md-center">
+                        <span class="ads-title">- Sponsored Ad -</span>
+                        <a href="#" class="widget-ads">
+                            <img src="images/ads/ad-360.png" alt="Advertisement" />
+                        </a>
+                    </div>
+
+                    <!-- widget tags -->
+                    <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Tag Clouds</h3>
+                            <img src="images/wave.svg" class="wave" alt="wave" />
+                        </div>
+                        <div class="widget-content">
+                            <a href="#" class="tag">#Trending</a>
+                            <a href="#" class="tag">#Video</a>
+                            <a href="#" class="tag">#Featured</a>
+                            <a href="#" class="tag">#Gallery</a>
+                            <a href="#" class="tag">#Celebrities</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

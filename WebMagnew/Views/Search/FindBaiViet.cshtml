@@ -1,0 +1,48 @@
+﻿@model List<Post>
+@{
+    ViewData["Title"] = "FindBaiViet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+<main class="main-content">
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-10 pt-lg-0">
+                    <h2>Kết quả tìm kiếm</h2>
+                    @if (Model != null && Model.Count > 0)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            string url = $"/{item.Alias}.html";
+                            <div class="col-md-12 col-sm-6">
+                                <!-- post -->
+                                <div class="post post-list clearfix">
+                                    <div class="thumb rounded">
+                                        <span class="post-format-sm">
+                                            <i class="icon-picture"></i>
+                                        </span>
+                                        <a href="@url">
+                                            <div class="inner">
+                                                <img src="~/images/posts/@item.Thumb" alt="@item.Tilte" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details">
+                                        <h5 class="post-title"><a href="@url">@item.Tilte</a></h5>
+                                        <p class="excerpt mb-0">@item.Scontent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+}
+

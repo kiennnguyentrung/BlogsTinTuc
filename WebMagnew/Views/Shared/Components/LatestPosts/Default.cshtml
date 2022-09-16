@@ -1,0 +1,51 @@
+﻿@model List<Post>
+    @if (Model != null)
+    {
+        <!-- section header -->
+        <div class="section-header">
+            <h3 class="section-title">Latest Posts</h3>
+            <img src="images/wave.svg" class="wave" alt="wave" />
+        </div>
+
+        <div class="padding-30 rounded bordered">
+
+            <div class="row">
+                @if (Model != null && Model.Count > 0)
+                {
+                 
+                    foreach (var item in Model)
+                    {
+                        string url = $"/{item.Alias}.html";
+                        <div class="col-md-12 col-sm-6">
+                            <!-- post -->
+                            <div class="post post-list clearfix">
+                                <div class="thumb rounded">
+                                    <span class="post-format-sm">
+                                        <i class="icon-picture"></i>
+                                    </span>
+                                    <a href="@url">
+                                        <div class="inner">
+                                            <img src="images/posts/@item.Thumb" alt="@item.Tilte" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="details">
+                                    <h5 class="post-title"><a href="@url">@item.Tilte</a></h5>
+                                    <p class="excerpt mb-0">@item.Scontent</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <!-- load more button -->
+            <!--<div class="text-center">
+                <button class="btn btn-simple">Load More</button>
+            </div>-->
+            @*<div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" options="@PagedListRenderOptions.PageNumbersOnly" list="@Model" asp-area="" asp-controller="Posts" asp-route-catID="@ViewBag.CurrentCat" asp-action="Index"></pager>
+                </ul>
+            </div>*@
+        </div>
+}

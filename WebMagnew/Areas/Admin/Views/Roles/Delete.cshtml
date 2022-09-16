@@ -1,0 +1,42 @@
+﻿@model WebMagnew.Models.Role
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Roles" asp-action="Index">QUẢN LÝ QUYỀN TRUY CẬP</a></li>
+        <li class="breadcrumb-item active" aria-current="page">XÓA QUYỀN TRUY CẬP</li>
+    </ol>
+    <h6 class="slim-pagetitle">XÓA QUYỀN TRUY CẬP</h6>
+</div><!-- slim-pageheader -->
+
+
+<div class="section-wrapper mg-t-20">
+    <table class="table table-reference">
+        <thead>
+            <tr>
+                <th class="wd-10p">ID</th>
+                <th class="wd-30p">RoleName</th>
+                <th class="wd-60p">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input asp-for="RoleId" class="form-control" type="text"></td>
+                <td><input asp-for="RoleName" class="form-control" type="text"></td>
+                <td><input asp-for="RoleDescription" class="form-control" type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- section-wrapper -->
+<div style="text-align: center |inherit" class="form-layout-footer mg-t-3">
+    <form asp-area="Admin" asp-action="Delete" asp-route-id="@Model.RoleId">
+        <input type="hidden" asp-for="RoleId" />
+        <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+        <a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="btn btn-success bd-0">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,113 @@
+﻿@model WebMagnew.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Categories" asp-action="Index">QUẢN LÝ DANH MỤC</a></li>
+        <li class="breadcrumb-item active" aria-current="page">CHỈNH SỬA DANH MỤC</li>
+    </ol>
+    <h6 class="slim-pagetitle">CHỈNH SỬA DANH MỤC: @Model.CatName </h6>
+</div><!-- slim-pageheader -->
+
+<div class="section-wrapper">
+    <div class="form-layout">
+        <form asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.CatId" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="CatId" />
+            <input type="hidden" asp-for="Alias" />
+            <input type="hidden" asp-for="Thumb" />
+            <input type="hidden" asp-for="Icon" />
+            <input type="hidden" asp-for="Cover" />
+            <div class="row mg-b-25">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Tên danh mục: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="CatName">
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-6">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Thư mục cha: <span class="tx-danger">*</span></label>
+                        <select class="form-control select2" asp-for="Parents" asp-items="@ViewBag.DanhMucGoc" required>
+                            <option value="0" selected>DANH MỤC GỐC</option>
+                        </select>
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Sắp xếp: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="number" value="0" asp-for="Ordering">
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Level: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="number" value="0" asp-for="Levels">
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label">Mô tả: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="Description">
+                    </div>
+                </div><!-- col-12 -->
+                <div class="col-lg-6">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Thumb: <span class="tx-danger">*</span></label>
+                        <input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Cover: <span class="tx-danger">*</span></label>
+                        <input name="fCover" type="file" class="form-control-file" asp-for="Cover" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Icon: <span class="tx-danger">*</span></label>
+                        <input name="fIcon" type="file" class="form-control-file" asp-for="Icon" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Trạng thái:</label>
+                        <br />
+                        <input type="checkbox" asp-for="Pulished"><span>Active</span>
+                    </div>
+                </div><!-- col-3 -->
+                <div class="col-lg-12">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Tiêu đề: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="Tilte">
+                    </div>
+                </div><!-- col-12 -->
+                <div class="col-lg-12">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Meta key: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="MetaKey">
+                    </div>
+                </div><!-- col-12 -->
+                <div class="col-lg-12">
+                    <div class="form-group mg-b-10-force">
+                        <label class="form-control-label">Meta desc: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" asp-for="MetaDesc">
+                    </div>
+                </div><!-- col-12 -->
+            </div><!-- row -->
+            <div class="form-group">
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+            </div>
+        </form>  
+    </div>
+    
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

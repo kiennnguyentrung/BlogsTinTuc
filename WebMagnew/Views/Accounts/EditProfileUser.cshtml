@@ -1,0 +1,47 @@
+﻿@model WebMagnew.Models.Account
+@{
+    ViewData["Title"] = "EditProfileUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="main-content">
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-10 pt-lg-0">
+                <h2>Tài khoản của tôi</h2>
+                    <form asp-controller="Accounts" asp-action="EditProfileUser" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="AccountId" />
+                        <input type="hidden" asp-for="Salt" />
+                        <div class="row mg-b-25">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Họ tên: <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="text" asp-for="FullName">
+                                </div>
+                            </div><!-- col-4 -->
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Số điện thoại: <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="text" asp-for="Phone">
+                                </div>
+                            </div><!-- col-4 -->
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="text" asp-for="Email">
+                                </div>
+                            </div><!-- col-12 -->
+
+                        </div><!-- row -->
+
+                        <div class="form-layout-footer">
+                            <button class="btn btn-primary bd-0" value="Save">Cập nhật</button>
+                            <button class="btn btn-secondary bd-0">Hủy</button>
+                        </div><!-- form-layout-footer -->
+                    </form>
+                </div><!-- form-layout -->
+            </div><!-- section-wrapper -->
+            </div>
+        </div>
+    </main>

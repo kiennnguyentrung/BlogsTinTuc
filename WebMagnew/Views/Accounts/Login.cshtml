@@ -1,0 +1,29 @@
+﻿@model WebMagnew.ModelView.LoginViewModel
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="main-content">
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-10 pt-lg-0">
+                    <form asp-area="" asp-controller="Accounts" asp-action="Login" method="post">
+                        <div class="signin-box">
+                            <h2 class="signin-title-primary">Đăng nhập</h2>
+                            <div class="form-group">
+                                <input type="text" class="form-control" asp-for="Email" placeholder="Enter your email">
+                            </div><!-- form-group -->
+                            <div class="form-group mg-b-50">
+                                <input type="password" class="form-control" asp-for="Password" placeholder="Enter your password">
+                            </div><!-- form-group -->
+                            <button class="btn btn-primary btn-block btn-signin">Đăng nhập</button>
+                            <p class="mg-b-0">Bạn chưa có tài khoản? <a href="/dang-ky.html">Đăng ký</a></p>
+                            <p class="mg-b-0">@ViewBag.Error</p>
+                        </div><!-- signin-box -->
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

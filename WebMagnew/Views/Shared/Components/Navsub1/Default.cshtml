@@ -1,0 +1,15 @@
+﻿@model List<Category>
+@if (Model != null)
+{
+    <div class="dropdown-menu">
+        <ul class="list">
+            @foreach (var item in Model)
+            {
+                @if(item.Levels ==2 && item.Parents == 2)
+                { 
+                <li><a class="dropdown-item" href="/@item.Alias">@item.CatName</a></li>
+                }
+            }
+        </ul>
+    </div>
+}

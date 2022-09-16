@@ -1,0 +1,152 @@
+﻿@model WebMagnew.Models.Post
+
+@{
+    ViewData["Title"] = "CHI TIẾT BÀI VIẾT";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Posts" asp-action="Index">QUẢN LÝ DANH MỤC</a></li>
+        <li class="breadcrumb-item active" aria-current="page">CHI TIẾT BÀI VIẾT</li>
+    </ol>
+    <h6 class="slim-pagetitle">CHI TIẾT BÀI VIẾT </h6>
+</div><!-- slim-pageheader -->
+<div class="section-wrapper mg-t-20">
+    <div class="form-layout form-layout-6">
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                ID:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="PostId">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Tiêu đề:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Tilte">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Mô tả ngắn
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Scontent">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Meta key:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="MetaKey">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Meta Desc:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="MetaDesc">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Trạng thái:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (Model.Published == true)
+                {
+                    <span class="badge badge-primary">Public</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Non-Public</span>
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Trạng thái:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (Model.IsHot == true)
+                {
+                    <span class="badge badge-primary">Hot</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Non-Hot</span>
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Trạng thái:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (Model.IsNewFeed == true)
+                {
+                    <span class="badge badge-primary">Isnewfeed</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Non-isnewfeed</span>
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Tác giả:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Author">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Ngày tạo:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="CreateAt">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Tags:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Tag">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Thumb:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (!string.IsNullOrEmpty(Model.Thumb))
+                {
+                    <img width="80" height="80" src="~/images/categories/@Model.Thumb" alt="@Model.Scontent" />
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Mô tả:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Contents">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,79 @@
+﻿@model WebMagnew.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="slim-pageheader">
+    <ol class="breadcrumb slim-breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Posts" asp-action="Index">QUẢN LÝ TÀI KHOẢN</a></li>
+        <li class="breadcrumb-item active" aria-current="page">CHI TIẾT TÀI KHOẢN</li>
+    </ol>
+    <h6 class="slim-pagetitle">CHI TIẾT TÀI KHOẢN </h6>
+</div><!-- slim-pageheader -->
+<div class="section-wrapper mg-t-20">
+    <div class="form-layout form-layout-6">
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                ID:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="AccountId">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Họ tên:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="FullName">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Ngày tạo:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="CreateDate">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <!--<div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Email:
+            </div>--><!-- col-4 -->
+            <!--<div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Email">
+            </div>--><!-- col-8 -->
+        <!--</div>--><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Trạng thái:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                @if (Model.Active == true)
+                {
+                    <span class="badge badge-primary">Active</span>
+                }
+                else
+                {
+                    <span class="badge badge-primary">Block</span>
+                }
+            </div><!-- col-8 -->
+        </div><!-- row -->
+        <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+                Role:
+            </div><!-- col-4 -->
+            <div class="col-7 col-sm-8">
+                <input class="form-control" type="text" asp-for="Role.RoleName">
+            </div><!-- col-8 -->
+        </div><!-- row -->
+    </div><!-- form-layout -->
+</div><!-- section-wrapper -->
+
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.AccountId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>*@
